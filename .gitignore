@@ -1,3 +1,12 @@
 *.o
 *.swp
 *.bak
+*.so
+libloragw/test_*
+libloragw/inc/config.h
+util_lbt_test/util_lbt_test
+util_pkt_logger/util_pkt_logger
+util_spectral_scan/util_spectral_scan
+util_spi_stress/util_spi_stress
+util_tx_continuous/util_tx_continuous
+util_tx_test/util_tx_test
