@@ -42,7 +42,7 @@ $(LGW_PATH)/inc/config.h:
 	$(MAKE) all -C $(LGW_PATH); \
 	fi
 
-$(LGW_PATH)/libloragw.a: $(LGW_INC)
+$(LGW_PATH)/libloragw.so: $(LGW_INC)
 	@if test ! -f $@; then \
 	$(MAKE) all -C $(LGW_PATH); \
 	fi
@@ -57,7 +57,7 @@ $(OBJDIR)/%.o: src/%.c $(INCLUDES) | $(OBJDIR)
 
 ### Main program assembly
 
-util_spectral_scan: $(OBJDIR)/util_spectral_scan.o
-	$(CC) -L$(LGW_PATH) $^ $(LIBS) -o $@
+util_spectral_scan: $(OBJDIR)/util_spectral_scan.o $(LGW_PATH)/libloragw.so
+	$(CC) -L$(LGW_PATH) -Wl,-rpath,\$$ORIGIN/$(LGW_PATH) $< $(LIBS) -o $@
 
 ### EOF

@@ -13,8 +13,7 @@ LoRa Gateway project
 
 This directory contains the sources of the library to build a gateway based on 
 a Semtech LoRa multi-channel RF receiver (a.k.a. concentrator).
-Once compiled all the code is contained in the libloragw.a file that will be 
-statically linked (ie. integrated in the final executable).
+Once compiled all the code is contained in the libloragw.so shared library.
 
 The library also comes with a bunch of basic tests programs that are used to 
 test the different sub-modules of the library.

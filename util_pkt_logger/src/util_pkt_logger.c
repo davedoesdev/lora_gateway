@@ -397,7 +397,7 @@ int main(int argc, char **argv)
 
     /* local timestamp variables until we get accurate GPS time */
     struct timespec fetch_time;
-    char fetch_timestamp[30];
+    char fetch_timestamp[300];
     struct tm * x;
 
     /* parse command line options */

@@ -48,7 +48,7 @@ $(LGW_PATH)/inc/config.h:
 	$(MAKE) all -C $(LGW_PATH); \
 	fi
 
-$(LGW_PATH)/libloragw.a: $(LGW_INC)
+$(LGW_PATH)/libloragw.so: $(LGW_INC)
 	@if test ! -f $@; then \
 	$(MAKE) all -C $(LGW_PATH); \
 	fi
@@ -61,7 +61,7 @@ $(OBJDIR):
 $(OBJDIR)/$(APP_NAME).o: src/$(APP_NAME).c $(LGW_INC) | $(OBJDIR)
 	$(CC) -c $(CFLAGS) -I$(LGW_PATH)/inc $< -o $@
 
-$(APP_NAME): $(OBJDIR)/$(APP_NAME).o $(LGW_PATH)/libloragw.a
-	$(CC) -L$(LGW_PATH) $< -o $@ $(LIBS)
+$(APP_NAME): $(OBJDIR)/$(APP_NAME).o $(LGW_PATH)/libloragw.so
+	$(CC) -L$(LGW_PATH) -Wl,-rpath,\$$ORIGIN/$(LGW_PATH) $< -o $@ $(LIBS)
 
 ### EOF

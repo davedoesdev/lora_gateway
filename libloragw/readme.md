@@ -307,7 +307,7 @@ Once build, to use that library on another system, you need to export the
 following files :
 
 * libloragw/library.cfg  -> root configuration file
-* libloragw/libloragw.a  -> static library, to be linked with a program
+* libloragw/libloragw.so -> shared library, to be linked with a program
 * libloragw/readme.md  -> required for license compliance
 * libloragw/inc/config.h  -> C configuration flags, derived from library.cfg
 * libloragw/inc/loragw_*.h  -> take only the ones you need (eg. _hal and _gps)
@@ -374,7 +374,7 @@ also be available.
 For a typical application you need to:
 
 * include loragw_hal.h in your program source
-* link to the libloragw.a static library during compilation
+* link to the libloragw.so shared library during compilation
 * link to the librt library due to loragw_aux dependencies (timing functions)
 
 For an application that will also access the concentrator configuration 

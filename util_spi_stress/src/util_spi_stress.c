@@ -142,7 +142,7 @@ int main(int argc, char **argv)
     /* start SPI link */
     i = lgw_connect(false, DEFAULT_TX_NOTCH_FREQ);
     if (i != LGW_REG_SUCCESS) {
-        MSG("ERROR: lgw_connect() did not return SUCCESS");
+        MSG("ERROR: lgw_connect() did not return SUCCESS\n");
         return EXIT_FAILURE;
     }
 
@@ -273,14 +273,14 @@ int main(int argc, char **argv)
             }
         }
     } else {
-        MSG("ERROR: invalid test number");
+        MSG("ERROR: invalid test number\n");
         usage();
     }
 
     /* close SPI link */
     i = lgw_disconnect();
     if (i != LGW_REG_SUCCESS) {
-        MSG("ERROR: lgw_disconnect() did not return SUCCESS");
+        MSG("ERROR: lgw_disconnect() did not return SUCCESS\n");
         return EXIT_FAILURE;
     }
 

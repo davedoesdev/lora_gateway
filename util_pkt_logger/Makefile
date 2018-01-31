@@ -46,7 +46,7 @@ $(LGW_PATH)/inc/config.h:
 	$(MAKE) all -C $(LGW_PATH); \
 	fi
 
-$(LGW_PATH)/libloragw.a: $(LGW_INC)
+$(LGW_PATH)/libloragw.so: $(LGW_INC)
 	@if test ! -f $@; then \
 	$(MAKE) all -C $(LGW_PATH); \
 	fi
@@ -64,7 +64,7 @@ $(OBJDIR)/parson.o: src/parson.c inc/parson.h | $(OBJDIR)
 $(OBJDIR)/$(APP_NAME).o: src/$(APP_NAME).c $(LGW_INC) inc/parson.h | $(OBJDIR)
 	$(CC) -c $(CFLAGS) -I$(LGW_PATH)/inc $< -o $@
 
-$(APP_NAME): $(OBJDIR)/$(APP_NAME).o $(LGW_PATH)/libloragw.a $(OBJDIR)/parson.o
-	$(CC) -L$(LGW_PATH) $< $(OBJDIR)/parson.o -o $@ $(LIBS)
+$(APP_NAME): $(OBJDIR)/$(APP_NAME).o $(LGW_PATH)/libloragw.so $(OBJDIR)/parson.o
+	$(CC) -L$(LGW_PATH) -Wl,-rpath,\$$ORIGIN/$(LGW_PATH) $< $(OBJDIR)/parson.o -o $@ $(LIBS)
 
 ### EOF
