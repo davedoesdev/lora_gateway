@@ -380,7 +380,7 @@ int lgw_gps_disable(int fd) {
     tcflush(fd, TCIOFLUSH);
 
     i = close(fd);
-    if (i <= 0) {
+    if (i < 0) {
         DEBUG_MSG("ERROR: TTY PORT FAIL TO CLOSE\n");
         return LGW_GPS_ERROR;
     }
